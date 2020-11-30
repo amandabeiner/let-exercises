@@ -21,8 +21,9 @@ class CreateSchema < ActiveRecord::Migration[4.2]
     end
 
     create_table :restaurants, force: true do |t|
-      t.string :name
+      t.string :name, null: false
       t.string :address
+      t.integer :max_capacity, null: false
 
       t.belongs_to :restaurant_owner
 

@@ -53,4 +53,35 @@ RSpec.describe Restaurant do
       end
     end
   end
+
+  describe "#size" do
+    context "when the restaurant can fit less than 20 people" do
+      it "returns small" do
+        restaurant = FactoryBot.build_stubbed(:restaurant, max_capacity: 19)
+        result = restaurant.size
+
+        expect(result).to eq("small")
+      end
+    end
+
+    context "when the restaurant can fit less than 50 people" do
+      it "returns medium" do
+        restaurant = FactoryBot.build_stubbed(:restaurant, max_capacity: 20)
+
+        result = restaurant.size
+
+        expect(result).to eq("medium")
+      end
+    end
+
+    context "when the restaurant can fit 50 or more people" do
+      it "returns large" do
+        restaurant = FactoryBot.build_stubbed(:restaurant, max_capacity: 50)
+
+        result = restaurant.size
+
+        expect(result).to eq("large")
+      end
+    end
+  end
 end

@@ -15,6 +15,16 @@ class Restaurant < ActiveRecord::Base
     "#{name} by #{restaurant_owner.name}"
   end
 
+  def size
+    if max_capacity < 20
+      return "small"
+    elsif max_capacity < 50
+      return "medium"
+    else
+      return "large"
+    end
+  end
+
   def has_address?
     !address.nil?
   end
